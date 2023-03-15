@@ -29,6 +29,15 @@ public class DirtController : MonoBehaviour
 
     }
 
+    public static void updateAllCleanable() {
+
+        foreach (GameObject g in GameObject.FindGameObjectsWithTag("Dirt")) {
+
+            g.GetComponent<DirtController>().updateCleanable();
+
+        }
+
+    }
 
     void updateCleanable() {
 
