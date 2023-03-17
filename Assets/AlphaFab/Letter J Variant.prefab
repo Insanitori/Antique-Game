@@ -40,7 +40,7 @@ PrefabInstance:
     - target: {fileID: -8679921383154817045, guid: 7838bda688217634a9c6c47c484a816a,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: -4.69
+      value: -4.4
       objectReference: {fileID: 0}
     - target: {fileID: -8679921383154817045, guid: 7838bda688217634a9c6c47c484a816a,
         type: 3}
@@ -114,8 +114,8 @@ Rigidbody:
   m_UseGravity: 1
   m_IsKinematic: 0
   m_Interpolate: 0
-  m_Constraints: 56
-  m_CollisionDetection: 2
+  m_Constraints: 88
+  m_CollisionDetection: 1
 --- !u!65 &1056216035
 BoxCollider:
   m_ObjectHideFlags: 0
