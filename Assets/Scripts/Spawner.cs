@@ -16,7 +16,7 @@ public class Spawner : MonoBehaviour
         save = false;
         alph = Random.Range(0, meshes.Length);
 
-        currAlpha = Instantiate(meshes[alph], gameObject.transform, gameObject.transform);
+        currAlpha = Instantiate(meshes[alph], gameObject.transform, true);
     }
 
     // Update is called once per frame
@@ -38,7 +38,7 @@ public class Spawner : MonoBehaviour
     private void spawning()
     {
         save = false;
-        currAlpha = Instantiate(meshes[alph], gameObject.transform,gameObject.transform);
+        currAlpha = Instantiate(meshes[alph], gameObject.transform, true);
         alph = Random.Range(0, meshes.Length);
     }
 }
