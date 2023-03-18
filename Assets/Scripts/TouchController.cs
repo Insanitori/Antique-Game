@@ -14,7 +14,7 @@ public class TouchController : MonoBehaviour
     public float lerpSpeed = 0.01f;
     public GameObject xRotation;
     public GameObject yRotation;
-
+    public float squareCleanDistance = 40000;
 
     Vector2 deltaPosition = new Vector2();
     string tool = "drag";
@@ -50,22 +50,32 @@ public class TouchController : MonoBehaviour
                     }
 
                 break;
+                case "clean":
+
+                    if (Input.GetTouch(0).phase == TouchPhase.Began || Input.GetTouch(0).deltaPosition != Vector2.zero) {
+
+                        foreach (GameObject g in GameObject.FindGameObjectsWithTag("Dirt")) {
+
+                            if (g.GetComponent<DirtController>().cleanable && (g.GetComponent<DirtController>().screenPosition - (Vector2)Input.mousePosition).SqrMagnitude() <= squareCleanDistance) {
+
+                                Destroy(g);
+
+                            }
+
+                        }
+
+                    }
+
+                break;
 
             }
 
-
-        }
-        foreach (Touch touch in Input.touches) {
-
-            if (touch.phase == TouchPhase.Began) {
-
-                Debug.Log("New Finger : " + touch.fingerId);
-
-            }
 
         }
         float xDifference = Mathf.Abs(xRotation.transform.localEulerAngles.y - xMove);
         float yDifference = Mathf.Abs(yRotation.transform.localEulerAngles.x - yMove);
+        yDifference %= 360;
+        xDifference %= 360;
         bool updateCleanable = false;
         if (xDifference < 0.01f) {}
         else if (xDifference < 1) {
@@ -103,6 +113,26 @@ public class TouchController : MonoBehaviour
 
         }
 
+
+    }
+
+    public void setToDrag() {
+
+        Debug.Log("setting to drag");
+        tool = "drag";
+
+    }
+
+    public void setToSpray() {
+
+        tool = "spray";
+
+    }
+
+    public void setToClean() {
+
+        Debug.Log("setting to clean");
+        tool = "clean";
 
     }
 
