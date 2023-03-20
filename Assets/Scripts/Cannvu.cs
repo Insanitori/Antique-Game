@@ -57,6 +57,11 @@ public class Cannvu : MonoBehaviour
             stupid = false;
         }
 
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Application.Quit();
+        }
+
         
     }
 
